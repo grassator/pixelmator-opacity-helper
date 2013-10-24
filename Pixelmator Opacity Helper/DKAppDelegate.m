@@ -7,7 +7,21 @@
 //
 
 #import "DKAppDelegate.h"
-#import "UIElementUtilities.h"
+
+/*!
+ From 10.9's AXUIElement.h in ApplicationServices.framework:
+ 
+ @function AXIsProcessTrustedWithOptions
+ @abstract Returns whether the current process is a trusted accessibility client.
+ @param options A dictionary of options, or NULL to specify no options. The following options are available:
+ 
+ KEY: kAXTrustedCheckOptionPrompt
+ VALUE: ACFBooleanRef indicating whether the user will be informed if the current process is untrusted. This could be used, for example, on application startup to always warn a user if accessibility is not enabled for the current process. Prompting occurs asynchronously and does not affect the return value.
+ 
+ @result Returns TRUE if the current process is a trusted accessibility client, FALSE if it is not.
+ */
+extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
+extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
 @implementation DKAppDelegate
 
@@ -21,129 +35,55 @@
   _statusBar.highlightMode = YES;
 }
 
+- (void)showAccessibilityApiWarningWithOSXTenNineOrNewer:(BOOL)isOSXTenNineOrNewer
+{
+  NSString * informationText;
+  if(isOSXTenNineOrNewer) {
+    informationText = @"Access can be granted in System Preferences. Please reopen Pixelmator Opacity Helper afterwards.";
+  } else {
+    informationText = @"Please click on \"access for assistive devices\" checkbox in System Preferences Universal Access pane and reopen Pixelmator Opacity Helper afterwards.";
+  }
+  NSAlert *alert = [NSAlert alertWithMessageText:@"Pixelmator Opacity Helper needs access to Accessibility APIs."
+                                   defaultButton:@"Exit & Open System Preferences"
+                                 alternateButton:@"Exit"
+                                     otherButton:nil
+                       informativeTextWithFormat:@""];
+  [alert setInformativeText:informationText];
+  [alert setAlertStyle:NSCriticalAlertStyle];
+  
+  // if user has chosen to go preferences
+  if([alert runModal] == NSAlertDefaultReturn)
+  {
+    // execute applescript that opens preferences on appropriate pane
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"assistive" ofType:@"scpt"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSDictionary* errors = [NSDictionary dictionary];
+    NSAppleScript* appleScript = [[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+    [appleScript executeAndReturnError:nil];
+  }
+  
+  [NSApp terminate:self];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-  
-  // Initializing some values
-  _lastValue = -1;
-  
-  // Making unsafe reference so we can use it an block without memory leak
-  DKAppDelegate * __unsafe_unretained app = self;
-  
-  // Listening for global key down events instead of local since we want
-  // to do something while other applciation (Pixelmator) is active
-  _eventHandler = [NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask
-                                         handler:^(NSEvent *event)
-  {
-    // Filtering out numers based on key codes which should be pretty fast
-    ushort code = [event keyCode];
-    if (
-        (code >= 18 && code <= 29 && code != 27 && code != 24) || // regular number keys
-        (code >= 82 && code <= 92 && code != 90) // numpad keys
-    )
-    {
-      [app adjustPixelmatorOpacity:[[event characters] integerValue]];
+  // We first have to check if the Accessibility APIs are turned on.
+  // If not, we have to tell the user to do it (they'll need to authenticate
+  // to do it).  If you are an accessibility app (i.e., if you are getting
+  // info about UI elements in other apps), the APIs won't work unless the
+  // access for assitive decices is turned on.
+  if (AXIsProcessTrustedWithOptions != NULL) { // OS X 10.9 or higher
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanFalse, kAXTrustedCheckOptionPrompt, nil];
+    if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
+      [self showAccessibilityApiWarningWithOSXTenNineOrNewer: YES];
     }
-  }];
- 
-  // Launching Pixelmator if it's not alread open
-  //[[NSWorkspace sharedWorkspace] launchApplication:@"Pixelmator"];
-}
-
-// Here we convert pressed number to a precentage value
-// taking into account consecutive presses that allow
-// for more precise control
-- (NSString*)getNewPercentageValue:(NSInteger) value
-{
-  NSString *newPercentageValue;
-  
-  // if consecutive inputs like "2", "5"
-  if (_lastTimePressed && _lastValue != -1 &&
-      [[NSDate date] timeIntervalSinceDate:_lastTimePressed] < 1.0)
-  {
-    if(_lastValue == 0)
-    {
-      if (value == 0) {
-        newPercentageValue = @"0";
-      } else {
-        newPercentageValue = [NSString stringWithFormat:@"%ld", value];
-      }
-    }
-    else
-    {
-      newPercentageValue = [NSString stringWithFormat:@"%ld%ld", _lastValue, value];
-    }
-    value = -1;
-  }
-  else
-  {
-    if(value == 0)
-    {
-      newPercentageValue = @"100";
-    }
-    else
-    {
-      newPercentageValue = [NSString stringWithFormat:@"%ld0", value];
-    }
+  } else if (!AXAPIEnabled()) { // OS X 10.5-10.8
+    [self showAccessibilityApiWarningWithOSXTenNineOrNewer: NO];
   }
   
-  // saving values for next iteration
-  _lastValue = value;
-  _lastTimePressed = [NSDate date];
-  
-  return newPercentageValue;
+  // Now we can start watching for keys
+  _opacityController = [DKOpacityController new];
 }
 
-
-- (void)adjustPixelmatorOpacity:(NSInteger) value
-{
-  NSString *newPercentageValue = [self getNewPercentageValue:value];
-  AXUIElementRef opacitySlider = NULL;
-
-  // Checking all open windows to see if Pixelmator is there
-  for (NSMutableDictionary* entry in (__bridge NSArray*)CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID))
-  {
-    if([[entry objectForKey:(id)kCGWindowOwnerName] isEqualToString:@"Pixelmator"])
-    {
-      // Getting accessibility reference to the app
-      pid_t ownerPID = (pid_t)[[entry objectForKey:(id)kCGWindowOwnerPID] integerValue];
-      AXUIElementRef appElement = AXUIElementCreateApplication(ownerPID);
-      
-      // Checking that the app is focused.
-      if(![[UIElementUtilities valueOfAttribute:@"AXFrontmost" ofUIElement:appElement] boolValue]) return;
-      
-      // Trying to find a document window
-      AXUIElementRef documentWindow = (__bridge AXUIElementRef)([UIElementUtilities valueOfAttribute:@"AXFocusedWindow" ofUIElement:appElement]);
-      if(!documentWindow) return;
-      
-      // Trying to locate a child slider that has bounds [0 : 100] (%)
-      NSArray *windowChildren = (NSArray *)[UIElementUtilities valueOfAttribute:@"AXChildren" ofUIElement:documentWindow];
-      for (id child in windowChildren) {
-        // First we check that it is a text field
-        if(![(NSString *)[UIElementUtilities valueOfAttribute:@"AXRole" ofUIElement:(AXUIElementRef)child] isEqualToString:@"AXSlider"]) continue;
-        
-        // Now we check upper and lower bound
-        if(100 != [[UIElementUtilities valueOfAttribute:@"AXMaxValue" ofUIElement:(AXUIElementRef)child] integerValue]) continue;
-        if(  0 != [[UIElementUtilities valueOfAttribute:@"AXMinValue" ofUIElement:(AXUIElementRef)child] integerValue]) continue;
-        
-        // Saving a reference and ending our search
-        opacitySlider = (__bridge AXUIElementRef)child;
-        break;
-      }
-
-      break;
-    }
-  }
-    
-  if(opacitySlider) {
-    [UIElementUtilities setStringValue:newPercentageValue forAttribute:@"AXValue" ofUIElement:opacitySlider];
-    [UIElementUtilities performAction:@"AXConfirm" ofUIElement:opacitySlider];
-  }
-}
-
-- (void)dealloc
-{
-  [NSEvent removeMonitor:self.eventHandler];
-}
 
 @end

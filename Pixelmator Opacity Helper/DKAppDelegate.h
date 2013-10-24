@@ -7,14 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DKOpacityController.h"
 
 @interface DKAppDelegate : NSObject <NSApplicationDelegate>
+
 @property (weak) IBOutlet NSMenu *statusMenu;
-
 @property (strong, nonatomic) NSStatusItem *statusBar;
-
-@property (readwrite) id eventHandler;
-@property (readwrite) NSDate *lastTimePressed;
-@property (nonatomic, assign) NSInteger lastValue;
+@property DKOpacityController *opacityController;
 
 @end

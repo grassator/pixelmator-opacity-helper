@@ -20,6 +20,8 @@
 		A94FF0261818FE53003D395D /* Pixelmator_Opacity_HelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF0251818FE53003D395D /* Pixelmator_Opacity_HelperTests.m */; };
 		A94FF03018191DA0003D395D /* statusicon.tif in Resources */ = {isa = PBXBuildFile; fileRef = A94FF02F18191DA0003D395D /* statusicon.tif */; };
 		A94FF0331819267E003D395D /* UIElementUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF0321819267E003D395D /* UIElementUtilities.m */; };
+		A94FF036181943F6003D395D /* DKOpacityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF035181943F6003D395D /* DKOpacityController.m */; };
+		A94FF03818194A73003D395D /* assistive.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A94FF03718194A73003D395D /* assistive.scpt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		A94FF02F18191DA0003D395D /* statusicon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = statusicon.tif; sourceTree = "<group>"; };
 		A94FF0311819267E003D395D /* UIElementUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIElementUtilities.h; sourceTree = "<group>"; };
 		A94FF0321819267E003D395D /* UIElementUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIElementUtilities.m; sourceTree = "<group>"; };
+		A94FF034181943F6003D395D /* DKOpacityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKOpacityController.h; sourceTree = "<group>"; };
+		A94FF035181943F6003D395D /* DKOpacityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKOpacityController.m; sourceTree = "<group>"; };
+		A94FF03718194A73003D395D /* assistive.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = assistive.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +127,9 @@
 			children = (
 				A94FF00D1818FE52003D395D /* DKAppDelegate.h */,
 				A94FF00E1818FE52003D395D /* DKAppDelegate.m */,
+				A94FF03718194A73003D395D /* assistive.scpt */,
+				A94FF034181943F6003D395D /* DKOpacityController.h */,
+				A94FF035181943F6003D395D /* DKOpacityController.m */,
 				A94FF0311819267E003D395D /* UIElementUtilities.h */,
 				A94FF0321819267E003D395D /* UIElementUtilities.m */,
 				A94FF02F18191DA0003D395D /* statusicon.tif */,
@@ -240,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A94FF0061818FE52003D395D /* InfoPlist.strings in Resources */,
+				A94FF03818194A73003D395D /* assistive.scpt in Resources */,
 				A94FF0141818FE52003D395D /* Images.xcassets in Resources */,
 				A94FF03018191DA0003D395D /* statusicon.tif in Resources */,
 				A94FF00C1818FE52003D395D /* Credits.rtf in Resources */,
@@ -262,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94FF036181943F6003D395D /* DKOpacityController.m in Sources */,
 				A94FF0081818FE52003D395D /* main.m in Sources */,
 				A94FF0331819267E003D395D /* UIElementUtilities.m in Sources */,
 				A94FF00F1818FE52003D395D /* DKAppDelegate.m in Sources */,
@@ -398,6 +408,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
 				INFOPLIST_FILE = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -411,6 +422,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
 				INFOPLIST_FILE = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
