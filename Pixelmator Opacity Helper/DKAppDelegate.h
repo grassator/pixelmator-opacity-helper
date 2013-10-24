@@ -11,5 +11,8 @@
 @interface DKAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (readwrite) id eventHandler;
+@property (readwrite) NSDate *lastTimePressed;
+@property (nonatomic, assign) NSInteger lastValue;
 
 @end
