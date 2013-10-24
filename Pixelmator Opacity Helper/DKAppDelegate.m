@@ -10,6 +10,16 @@
 
 @implementation DKAppDelegate
 
+- (void) awakeFromNib {
+  _statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+  
+  // you can also set an image
+  _statusBar.image = [NSImage imageNamed:@"statusicon.tif"];
+  
+  _statusBar.menu = _statusMenu;
+  _statusBar.highlightMode = YES;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   // Initializing some values
@@ -33,7 +43,9 @@
       [app adjustPixelmatorOpacity:[[event characters] integerValue]];
     }
   }];
-  
+ 
+  // Launching Pixelmator if it's not alread open
+  //[[NSWorkspace sharedWorkspace] launchApplication:@"Pixelmator"];
 }
 
 // Here we convert pressed number to a precentage value
@@ -43,12 +55,15 @@
 {
   NSString *newPercentageValue;
   
+  // if consecutive inputs like "2", "5"
   if (_lastTimePressed && _lastValue != -1 &&
       [[NSDate date] timeIntervalSinceDate:_lastTimePressed] < 1.0)
   {
-    if(value == 0 && _lastValue == 0)
+    if(_lastValue == 0)
     {
-      newPercentageValue = @"0%";
+      if (value == 0) {
+        newPercentageValue = @"0%";
+      }
     }
     else
     {

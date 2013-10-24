@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface DKAppDelegate : NSObject <NSApplicationDelegate>
+@property (weak) IBOutlet NSMenu *statusMenu;
 
-@property (assign) IBOutlet NSWindow *window;
+@property (strong, nonatomic) NSStatusItem *statusBar;
+
 @property (readwrite) id eventHandler;
 @property (readwrite) NSDate *lastTimePressed;
 @property (nonatomic, assign) NSInteger lastValue;
