@@ -22,6 +22,7 @@
 		A94FF0331819267E003D395D /* UIElementUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF0321819267E003D395D /* UIElementUtilities.m */; };
 		A94FF036181943F6003D395D /* DKOpacityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF035181943F6003D395D /* DKOpacityController.m */; };
 		A94FF03818194A73003D395D /* assistive.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A94FF03718194A73003D395D /* assistive.scpt */; };
+		A94FF03A181953F5003D395D /* appIcon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = A94FF039181953F5003D395D /* appIcon.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A94FF034181943F6003D395D /* DKOpacityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKOpacityController.h; sourceTree = "<group>"; };
 		A94FF035181943F6003D395D /* DKOpacityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKOpacityController.m; sourceTree = "<group>"; };
 		A94FF03718194A73003D395D /* assistive.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = assistive.scpt; sourceTree = "<group>"; };
+		A94FF039181953F5003D395D /* appIcon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = appIcon.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		A94FF0011818FE52003D395D /* Pixelmator Opacity Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A94FF039181953F5003D395D /* appIcon.iconset */,
 				A94FF00D1818FE52003D395D /* DKAppDelegate.h */,
 				A94FF00E1818FE52003D395D /* DKAppDelegate.m */,
 				A94FF03718194A73003D395D /* assistive.scpt */,
@@ -252,6 +255,7 @@
 				A94FF0141818FE52003D395D /* Images.xcassets in Resources */,
 				A94FF03018191DA0003D395D /* statusicon.tif in Resources */,
 				A94FF00C1818FE52003D395D /* Credits.rtf in Resources */,
+				A94FF03A181953F5003D395D /* appIcon.iconset in Resources */,
 				A94FF0121818FE52003D395D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +491,7 @@
 				A94FF02B1818FE53003D395D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A94FF02C1818FE53003D395D /* Build configuration list for PBXNativeTarget "Pixelmator Opacity HelperTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +500,7 @@
 				A94FF02E1818FE53003D395D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
