@@ -24,17 +24,25 @@
   // to do something while other applciation (Pixelmator) is active
   _eventHandler = [NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask
                                                          handler:^(NSEvent *event)
-                   {
-                     // Filtering out numers based on key codes which should be pretty fast
-                     ushort code = [event keyCode];
-                     if (
-                         (code >= 18 && code <= 29 && code != 27 && code != 24) || // regular number keys
-                         (code >= 82 && code <= 92 && code != 90) // numpad keys
-                         )
-                     {
-                       [app adjustPixelmatorOpacity:[[event characters] integerValue]];
-                     }
-                   }];
+  {
+    if([event modifierFlags] & (NSAlternateKeyMask |
+                                NSShiftKeyMask |
+                                NSCommandKeyMask |
+                                NSControlKeyMask |
+                                NSAlphaShiftKeyMask |
+                                NSFunctionKeyMask)
+    ) return;
+    
+    // Filtering out numers based on key codes which should be pretty fast
+    ushort code = [event keyCode];
+    if (
+        (code >= 18 && code <= 29 && code != 27 && code != 24) || // regular number keys
+        (code >= 82 && code <= 92 && code != 90) // numpad keys
+        )
+    {
+      [app adjustPixelmatorOpacity:[[event characters] integerValue]];
+    }
+  }];
   return self;
 }
 
