@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A94FEFFC1818FE52003D395D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FEFFB1818FE52003D395D /* Cocoa.framework */; };
+		A94FF0061818FE52003D395D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A94FF0041818FE52003D395D /* InfoPlist.strings */; };
+		A94FF0081818FE52003D395D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF0071818FE52003D395D /* main.m */; };
+		A94FF00C1818FE52003D395D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A94FF00A1818FE52003D395D /* Credits.rtf */; };
+		A94FF00F1818FE52003D395D /* DKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF00E1818FE52003D395D /* DKAppDelegate.m */; };
+		A94FF0121818FE52003D395D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94FF0101818FE52003D395D /* MainMenu.xib */; };
+		A94FF0141818FE52003D395D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A94FF0131818FE52003D395D /* Images.xcassets */; };
+		A94FF01B1818FE53003D395D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FF01A1818FE53003D395D /* XCTest.framework */; };
+		A94FF01C1818FE53003D395D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FEFFB1818FE52003D395D /* Cocoa.framework */; };
+		A94FF0241818FE53003D395D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A94FF0221818FE53003D395D /* InfoPlist.strings */; };
+		A94FF0261818FE53003D395D /* Pixelmator_Opacity_HelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94FF0251818FE53003D395D /* Pixelmator_Opacity_HelperTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A94FF01D1818FE53003D395D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A94FEFF01818FE52003D395D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A94FEFF71818FE52003D395D;
+			remoteInfo = "Pixelmator Opacity Helper";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A94FEFF81818FE52003D395D /* Pixelmator Opacity Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pixelmator Opacity Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94FEFFB1818FE52003D395D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A94FEFFE1818FE52003D395D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A94FEFFF1818FE52003D395D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A94FF0001818FE52003D395D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A94FF0031818FE52003D395D /* Pixelmator Opacity Helper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pixelmator Opacity Helper-Info.plist"; sourceTree = "<group>"; };
+		A94FF0051818FE52003D395D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A94FF0071818FE52003D395D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A94FF0091818FE52003D395D /* Pixelmator Opacity Helper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixelmator Opacity Helper-Prefix.pch"; sourceTree = "<group>"; };
+		A94FF00B1818FE52003D395D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A94FF00D1818FE52003D395D /* DKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKAppDelegate.h; sourceTree = "<group>"; };
+		A94FF00E1818FE52003D395D /* DKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKAppDelegate.m; sourceTree = "<group>"; };
+		A94FF0111818FE52003D395D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A94FF0131818FE52003D395D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A94FF0191818FE53003D395D /* Pixelmator Opacity HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pixelmator Opacity HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94FF01A1818FE53003D395D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A94FF0211818FE53003D395D /* Pixelmator Opacity HelperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pixelmator Opacity HelperTests-Info.plist"; sourceTree = "<group>"; };
+		A94FF0231818FE53003D395D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A94FF0251818FE53003D395D /* Pixelmator_Opacity_HelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pixelmator_Opacity_HelperTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A94FEFF51818FE52003D395D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FEFFC1818FE52003D395D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A94FF0161818FE53003D395D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FF01C1818FE53003D395D /* Cocoa.framework in Frameworks */,
+				A94FF01B1818FE53003D395D /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A94FEFEF1818FE52003D395D = {
+			isa = PBXGroup;
+			children = (
+				A94FF0011818FE52003D395D /* Pixelmator Opacity Helper */,
+				A94FF01F1818FE53003D395D /* Pixelmator Opacity HelperTests */,
+				A94FEFFA1818FE52003D395D /* Frameworks */,
+				A94FEFF91818FE52003D395D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A94FEFF91818FE52003D395D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A94FEFF81818FE52003D395D /* Pixelmator Opacity Helper.app */,
+				A94FF0191818FE53003D395D /* Pixelmator Opacity HelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A94FEFFA1818FE52003D395D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A94FEFFB1818FE52003D395D /* Cocoa.framework */,
+				A94FF01A1818FE53003D395D /* XCTest.framework */,
+				A94FEFFD1818FE52003D395D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A94FEFFD1818FE52003D395D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A94FEFFE1818FE52003D395D /* AppKit.framework */,
+				A94FEFFF1818FE52003D395D /* CoreData.framework */,
+				A94FF0001818FE52003D395D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		A94FF0011818FE52003D395D /* Pixelmator Opacity Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A94FF00D1818FE52003D395D /* DKAppDelegate.h */,
+				A94FF00E1818FE52003D395D /* DKAppDelegate.m */,
+				A94FF0101818FE52003D395D /* MainMenu.xib */,
+				A94FF0131818FE52003D395D /* Images.xcassets */,
+				A94FF0021818FE52003D395D /* Supporting Files */,
+			);
+			path = "Pixelmator Opacity Helper";
+			sourceTree = "<group>";
+		};
+		A94FF0021818FE52003D395D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A94FF0031818FE52003D395D /* Pixelmator Opacity Helper-Info.plist */,
+				A94FF0041818FE52003D395D /* InfoPlist.strings */,
+				A94FF0071818FE52003D395D /* main.m */,
+				A94FF0091818FE52003D395D /* Pixelmator Opacity Helper-Prefix.pch */,
+				A94FF00A1818FE52003D395D /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A94FF01F1818FE53003D395D /* Pixelmator Opacity HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				A94FF0251818FE53003D395D /* Pixelmator_Opacity_HelperTests.m */,
+				A94FF0201818FE53003D395D /* Supporting Files */,
+			);
+			path = "Pixelmator Opacity HelperTests";
+			sourceTree = "<group>";
+		};
+		A94FF0201818FE53003D395D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A94FF0211818FE53003D395D /* Pixelmator Opacity HelperTests-Info.plist */,
+				A94FF0221818FE53003D395D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A94FEFF71818FE52003D395D /* Pixelmator Opacity Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A94FF0291818FE53003D395D /* Build configuration list for PBXNativeTarget "Pixelmator Opacity Helper" */;
+			buildPhases = (
+				A94FEFF41818FE52003D395D /* Sources */,
+				A94FEFF51818FE52003D395D /* Frameworks */,
+				A94FEFF61818FE52003D395D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pixelmator Opacity Helper";
+			productName = "Pixelmator Opacity Helper";
+			productReference = A94FEFF81818FE52003D395D /* Pixelmator Opacity Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A94FF0181818FE53003D395D /* Pixelmator Opacity HelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A94FF02C1818FE53003D395D /* Build configuration list for PBXNativeTarget "Pixelmator Opacity HelperTests" */;
+			buildPhases = (
+				A94FF0151818FE53003D395D /* Sources */,
+				A94FF0161818FE53003D395D /* Frameworks */,
+				A94FF0171818FE53003D395D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A94FF01E1818FE53003D395D /* PBXTargetDependency */,
+			);
+			name = "Pixelmator Opacity HelperTests";
+			productName = "Pixelmator Opacity HelperTests";
+			productReference = A94FF0191818FE53003D395D /* Pixelmator Opacity HelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A94FEFF01818FE52003D395D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DK;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Dmitriy Kubyshkin";
+				TargetAttributes = {
+					A94FF0181818FE53003D395D = {
+						TestTargetID = A94FEFF71818FE52003D395D;
+					};
+				};
+			};
+			buildConfigurationList = A94FEFF31818FE52003D395D /* Build configuration list for PBXProject "Pixelmator Opacity Helper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A94FEFEF1818FE52003D395D;
+			productRefGroup = A94FEFF91818FE52003D395D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A94FEFF71818FE52003D395D /* Pixelmator Opacity Helper */,
+				A94FF0181818FE53003D395D /* Pixelmator Opacity HelperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A94FEFF61818FE52003D395D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FF0061818FE52003D395D /* InfoPlist.strings in Resources */,
+				A94FF0141818FE52003D395D /* Images.xcassets in Resources */,
+				A94FF00C1818FE52003D395D /* Credits.rtf in Resources */,
+				A94FF0121818FE52003D395D /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A94FF0171818FE53003D395D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FF0241818FE53003D395D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A94FEFF41818FE52003D395D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FF0081818FE52003D395D /* main.m in Sources */,
+				A94FF00F1818FE52003D395D /* DKAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A94FF0151818FE53003D395D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94FF0261818FE53003D395D /* Pixelmator_Opacity_HelperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A94FF01E1818FE53003D395D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A94FEFF71818FE52003D395D /* Pixelmator Opacity Helper */;
+			targetProxy = A94FF01D1818FE53003D395D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A94FF0041818FE52003D395D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A94FF0051818FE52003D395D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A94FF00A1818FE52003D395D /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A94FF00B1818FE52003D395D /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		A94FF0101818FE52003D395D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A94FF0111818FE52003D395D /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		A94FF0221818FE53003D395D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A94FF0231818FE53003D395D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A94FF0271818FE53003D395D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A94FF0281818FE53003D395D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A94FF02A1818FE53003D395D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
+				INFOPLIST_FILE = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A94FF02B1818FE53003D395D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
+				INFOPLIST_FILE = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A94FF02D1818FE53003D395D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pixelmator Opacity Helper.app/Contents/MacOS/Pixelmator Opacity Helper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Pixelmator Opacity HelperTests/Pixelmator Opacity HelperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A94FF02E1818FE53003D395D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pixelmator Opacity Helper.app/Contents/MacOS/Pixelmator Opacity Helper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pixelmator Opacity Helper/Pixelmator Opacity Helper-Prefix.pch";
+				INFOPLIST_FILE = "Pixelmator Opacity HelperTests/Pixelmator Opacity HelperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A94FEFF31818FE52003D395D /* Build configuration list for PBXProject "Pixelmator Opacity Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A94FF0271818FE53003D395D /* Debug */,
+				A94FF0281818FE53003D395D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A94FF0291818FE53003D395D /* Build configuration list for PBXNativeTarget "Pixelmator Opacity Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A94FF02A1818FE53003D395D /* Debug */,
+				A94FF02B1818FE53003D395D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A94FF02C1818FE53003D395D /* Build configuration list for PBXNativeTarget "Pixelmator Opacity HelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A94FF02D1818FE53003D395D /* Debug */,
+				A94FF02E1818FE53003D395D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A94FEFF01818FE52003D395D /* Project object */;
+}
