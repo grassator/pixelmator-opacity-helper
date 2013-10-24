@@ -7,6 +7,7 @@
 //
 
 #import "DKAppDelegate.h"
+#import "UIElementUtilities.h"
 
 @implementation DKAppDelegate
 
@@ -22,6 +23,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+  
   // Initializing some values
   _lastValue = -1;
   
@@ -62,12 +64,14 @@
     if(_lastValue == 0)
     {
       if (value == 0) {
-        newPercentageValue = @"0%";
+        newPercentageValue = @"0";
+      } else {
+        newPercentageValue = [NSString stringWithFormat:@"%ld", value];
       }
     }
     else
     {
-      newPercentageValue = [NSString stringWithFormat:@"%ld%ld%%", _lastValue, value];
+      newPercentageValue = [NSString stringWithFormat:@"%ld%ld", _lastValue, value];
     }
     value = -1;
   }
@@ -75,11 +79,11 @@
   {
     if(value == 0)
     {
-      newPercentageValue = @"100%";
+      newPercentageValue = @"100";
     }
     else
     {
-      newPercentageValue = [NSString stringWithFormat:@"%ld0%%", value];
+      newPercentageValue = [NSString stringWithFormat:@"%ld0", value];
     }
   }
   
@@ -90,10 +94,51 @@
   return newPercentageValue;
 }
 
+
 - (void)adjustPixelmatorOpacity:(NSInteger) value
 {
   NSString *newPercentageValue = [self getNewPercentageValue:value];
-  NSLog(@"%@", newPercentageValue);
+  AXUIElementRef opacitySlider = NULL;
+
+  // Checking all open windows to see if Pixelmator is there
+  for (NSMutableDictionary* entry in (__bridge NSArray*)CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID))
+  {
+    if([[entry objectForKey:(id)kCGWindowOwnerName] isEqualToString:@"Pixelmator"])
+    {
+      // Getting accessibility reference to the app
+      pid_t ownerPID = (pid_t)[[entry objectForKey:(id)kCGWindowOwnerPID] integerValue];
+      AXUIElementRef appElement = AXUIElementCreateApplication(ownerPID);
+      
+      // Checking that the app is focused.
+      if(![[UIElementUtilities valueOfAttribute:@"AXFrontmost" ofUIElement:appElement] boolValue]) return;
+      
+      // Trying to find a document window
+      AXUIElementRef documentWindow = (__bridge AXUIElementRef)([UIElementUtilities valueOfAttribute:@"AXFocusedWindow" ofUIElement:appElement]);
+      if(!documentWindow) return;
+      
+      // Trying to locate a child slider that has bounds [0 : 100] (%)
+      NSArray *windowChildren = (NSArray *)[UIElementUtilities valueOfAttribute:@"AXChildren" ofUIElement:documentWindow];
+      for (id child in windowChildren) {
+        // First we check that it is a text field
+        if(![(NSString *)[UIElementUtilities valueOfAttribute:@"AXRole" ofUIElement:(AXUIElementRef)child] isEqualToString:@"AXSlider"]) continue;
+        
+        // Now we check upper and lower bound
+        if(100 != [[UIElementUtilities valueOfAttribute:@"AXMaxValue" ofUIElement:(AXUIElementRef)child] integerValue]) continue;
+        if(  0 != [[UIElementUtilities valueOfAttribute:@"AXMinValue" ofUIElement:(AXUIElementRef)child] integerValue]) continue;
+        
+        // Saving a reference and ending our search
+        opacitySlider = (__bridge AXUIElementRef)child;
+        break;
+      }
+
+      break;
+    }
+  }
+    
+  if(opacitySlider) {
+    [UIElementUtilities setStringValue:newPercentageValue forAttribute:@"AXValue" ofUIElement:opacitySlider];
+    [UIElementUtilities performAction:@"AXConfirm" ofUIElement:opacitySlider];
+  }
 }
 
 - (void)dealloc
